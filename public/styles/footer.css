@@ -1,0 +1,26 @@
+footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+footer ul {
+  list-style: none;
+}
+
+footer ul li {
+  display: inline;
+}
+
+footer.tweet-date {
+  border-top: 1px solid #c1c1c1;
+  font-size: .8em;
+}
+.footer-icons {
+  margin-right: 10px;
+  display:none;
+  margin-right: 10px;
+}
+
+.tweet-post:hover .footer-icons{
+  display:block;
+}

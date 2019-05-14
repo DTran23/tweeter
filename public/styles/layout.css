@@ -32,3 +32,51 @@ body {
   padding-top: 140px;
   margin: 0 auto;
  }
+
+ article.tweet-post {
+   border: 1px solid #c1c1c1;
+   border-radius: 5px;
+   margin: 2em 2em;
+   
+ }
+
+ article.tweet-post header {
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 0px;
+  border-radius: 5px 5px 0px 0px;
+}
+
+article.tweet-post img {
+  width: 60px;
+  height: 60px;
+  background-color: #000;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+
+p.tweet-text  {
+  padding:1em 0px;
+}
+
+article.tweet-post p {
+  padding: 0px 10px;
+}
+
+#tweet-container .name-info {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+ .tweet-post header h2 {
+   margin-top: 0px;
+   padding: 19px 10px 20px 10px;
+
+ }
+ footer.tweet-date {
+   border-top: 1px solid #c1c1c1;
+   font-size: .8em;
+ }
