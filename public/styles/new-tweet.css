@@ -22,7 +22,6 @@ section.new-tweet {
 
 /* MAIN TWEETS */
 
-
 article.tweet-post {
   border: 1px solid #c1c1c1;
   border-radius: 5px;
@@ -46,8 +45,6 @@ article.tweet-post:hover {
   
 }
 
-
-
 article.tweet-post header {
  background-color: #f0f0f0;
  display: flex;
@@ -58,8 +55,8 @@ article.tweet-post header {
 }
 
 article.tweet-post img {
- width: 60px;
- height: 60px;
+ width: 50px;
+ height: 50px;
  background-color: #000;
  border-radius: 10px;
  margin-left: 10px;
@@ -73,7 +70,7 @@ article.tweet-post p {
  padding: 0px 10px;
 }
 
-#tweet-container .name-info {
+.name-info {
  display: flex;
  width: 100%;
  justify-content: space-between;
@@ -83,4 +80,10 @@ article.tweet-post p {
   margin-top: 0px;
   padding: 19px 10px 20px 10px;
 
+}
+
+#post-tweet .error-msg {
+  color: red;
+  margin-left: 1rem;
+  font-size: 14px;
 }

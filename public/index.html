@@ -36,43 +36,27 @@
 
     <!-- Top nav bar (fixed) -->
     <nav id="nav-bar">
-      <img class="logo" src="/images/bird.png">
-      <span class="header">Tweeter</span>
+      <div class="logo-content">
+        <img class="logo-img" src="/images/bird.png">
+        <span class="header">Tweeter</span>
+      </div>
+      <button class="compose-btn">Compose</button>
     </nav>
 
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
-        <form action="/tweets/" method="POST">
+        <form id="post-tweet" action="/tweets/" method="POST">
           <textarea class="tweet-field" name="text" placeholder="What are you humming about?"></textarea>
           <input type="submit" value="Tweet">
+          <span class="error-msg"></span>
           <span class="counter">140</span>
         </form>
       </section>
 
-      <section id="tweet-container">
-        <article class="tweet-post">
-          <header class="tweet-header">
-            <img src="/images/bill.png" alt="">
-              <div class="name-info">
-                <h2>Bill Fields</h2>
-                <p>@MrFields</p>
-              </div>
-          </header>
-          <p class="tweet-text">Little Tweet here</p>
-          <footer class="tweet-date">
-            <p class="footer-p">10 days ago</p>
-              <div class="footer-icons">
-                <ul>
-                  <li><i class="fas fa-flag"></i></li>
-                  <li><i class="fas fa-retweet"></i></li>
-                  <li><i class="fas fa-heart"></i></li>
-                </ul>
-              </div>
-          </footer>
-        </article>
-        
+      <section id="tweets-container">
+    <!-- Dynamic Tweets go here -->
       </section>
 
     </main>
