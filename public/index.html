@@ -18,52 +18,50 @@
 
     <!-- Tweet CSS -->
     <link rel="stylesheet" href="styles/new-tweet.css" type="text/css" />
-
+    
     <!-- Footer CSS -->
     <link rel="stylesheet" href="styles/footer.css" type="text/css" />
-        
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-
+    
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
-
+    
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/app.js"></script>
+    
+    <!-- Char Counter JS -->
+    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
   </head>
 
   <body>
-
     <!-- Top nav bar (fixed) -->
     <nav id="nav-bar">
       <div class="logo-content">
-        <img class="logo-img" src="/images/bird.png">
+        <img class="logo-img" src="/images/tweeter-logo.png">
         <span class="header">Tweeter</span>
       </div>
-      <button class="compose-btn">Compose</button>
+      <button class="compose-btn"><i class="fas fa-feather-alt"></i>Compose</button>
     </nav>
 
+    
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
         <form id="post-tweet" action="/tweets/" method="POST">
           <textarea class="tweet-field" name="text" placeholder="What are you humming about?"></textarea>
-          <input type="submit" value="Tweet">
+          <input class="submit-btn" type="submit" value="Tweet">
           <span class="error-msg"></span>
           <span class="counter">140</span>
         </form>
       </section>
-
+            
+      <!-- Dynamic Tweets Container here -->
       <section id="tweets-container">
-    <!-- Dynamic Tweets go here -->
       </section>
 
     </main>
-    <footer>
-
-    </footer>
-    <!-- Char Counter JS -->
-    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
   </body>
 </html>

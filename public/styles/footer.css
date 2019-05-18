@@ -1,26 +1,42 @@
+/* FOOTER STRUCTURE
+    | ==================================================================================== */
 footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-}
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between; }
+  footer ul {
+    list-style: none; }
+  footer ul li {
+    display: inline; }
 
-footer ul {
-  list-style: none;
-}
-
-footer ul li {
-  display: inline;
-}
-
-footer.tweet-date {
+.tweet-date {
   border-top: 1px solid #c1c1c1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   font-size: .8em;
-}
-.footer-icons {
-  margin-right: 10px;
-  display:none;
-  margin-right: 10px;
-}
+  color: #1f6d8f;
+  background-color: #eafbff;
+  border-bottom-right-radius: 2rem; }
 
-.tweet-post:hover .footer-icons{
-  display:block;
-}
+/* FOOTER ICONS
+    | ==================================================================================== */
+.footer-icons {
+  margin-right: 2rem;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s ease-in;
+  -o-transition: opacity 0.2s ease-in;
+  transition: opacity 0.2s ease-in; }
+  .footer-icons i {
+    color: #65c6f0;
+    margin-left: 0.4rem;
+    font-size: 1.5rem; }
+
+.tweet-post:hover .footer-icons {
+  opacity: 1; }

@@ -1,0 +1,152 @@
+/* VARIABLES & MIXINS
+    | ==================================================================================== */
+
+$main-shadow: 0px 10px 29px -14px rgba(0,66,161,0.35);
+$main-color: #65c6f0;
+$secondary-color: #263368 ;
+$transform: transform 0.3s ease-in;
+$reset-margin: 0 0;
+
+//MIXIN
+@mixin flex-align {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* COMPOSE TWEET 
+    | ==================================================================================== */
+
+.new-tweet {
+  display: none;
+  background-color: #fff;
+  box-shadow: $main-shadow;
+  width: 45%;
+  font-size: 1.8rem;
+  line-height: 2.5rem;
+  border-radius: 2rem;
+  border-color: #fff;
+  margin: 2rem 2rem 2.5rem 2rem;
+  padding: 1rem 4rem 3rem 4rem;
+  transition: $transform;
+
+    textarea::placeholder {
+      color: $secondary-color;
+    }
+    
+    h2 {
+      border-bottom: 1px solid #dfdfeb;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    .tweet-field {
+      width: 100%;
+      height: 10rem;
+      padding: 1rem 1rem;
+      background-color: #fafafd;
+      margin-bottom: 2rem;
+      border-color: #dfdfeb;
+      border-radius: 0.5rem;
+    }
+
+    
+    .counter {
+      float: right;
+      font-size: 2rem;
+      margin-top: 1rem;
+      color: $secondary-color;
+    }
+    
+    .submit-btn {
+      background-color: $main-color;
+      color: #fff;
+      font-size: 1.8rem;
+      letter-spacing: 0.5px;
+      padding: 1rem 4rem;
+      border-radius: 1.5rem;
+      border-style: none;
+      outline: none;
+    }
+
+    &:hover {
+      transform: translateY(-3px);
+      transform: scale(1.1);
+      box-shadow: $main-shadow;
+    }
+
+    .submit-btn:hover {
+      box-shadow: 0 3px 5px rgba(0,66,161,0.3); 
+      transform: translateY(-2px);
+    }
+    
+    .submit-btn:active {
+      transform: translateY(1px);
+      box-shadow: 0 3px 5px rgba(0,66,161,0.5)
+    }
+    
+    .error-msg {
+      color: #d33829;
+      margin-left: 2rem;
+      padding-top: 0.5rem;
+      font-size: 1.8rem;
+    }
+
+    .error-msg i {
+      margin-right: 0.5rem;
+      font-size: 2rem;
+    }
+
+}
+  
+  
+/* MAIN TWEETS
+    | ==================================================================================== */
+
+.tweet-post {
+  box-shadow: 0px 10px 29px -14px rgba(0,66,161,0.2);
+  background: #fafafd;
+  border-radius: 2rem;
+  border-bottom-left-radius: 0rem;
+  margin: 2em 2em;
+  transition: all 0.2s ease-in;
+  opacity: 0.8;
+
+    &:hover {
+      opacity: 1;
+      box-shadow: 0px 30px 29px -14px rgba(0,66,161,0.4);
+      transform: translateY(-0.5rem);
+    }
+
+    header {
+     @include flex-align;
+     background: #a2eeff;
+     margin-right: 0px;
+     padding: 1rem 0rem;
+     border-top-right-radius: 2rem;
+     border-top-left-radius: 2rem;
+    }
+
+    img {
+     background-color: rgba(0,66,161,0.35);
+     border-radius: 1rem;
+     margin-left: 1rem;
+    }
+
+    .tweet-text {
+     padding: 3rem 1.5rem;
+     font-size: 1.8rem;
+     margin: $reset-margin;
+    }
+
+    h3, p {
+     padding: 1rem 2rem;
+     margin: $reset-margin;
+    }
+
+    .name-info {
+     @include flex-align;
+     width: 100%;
+    }
+    
+  }

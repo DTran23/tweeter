@@ -1,0 +1,52 @@
+/* FOOTER STRUCTURE
+    | ==================================================================================== */
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  
+  ul {
+    list-style: none;
+  }
+  
+  ul li {
+    display: inline;
+  }
+  
+}
+
+.tweet-date {
+  border-top: 1px solid #c1c1c1;
+  display: flex;
+  align-items: center;
+  font-size: .8em;
+  color: #1f6d8f;
+  background-color: rgb(234, 251, 255);
+  border-bottom-right-radius: 2rem;
+  
+}
+
+/* FOOTER ICONS
+    | ==================================================================================== */
+
+.footer-icons {
+  margin-right: 2rem;
+  opacity: 0;
+  transition: opacity 0.2s ease-in;
+  
+  
+  i {
+    color: #65c6f0;
+    margin-left: 0.4rem;
+    font-size: 1.5rem;  
+  }
+
+}
+
+.tweet-post:hover .footer-icons{
+  opacity: 1
+}
+
+
+
+

@@ -1,187 +1,169 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
-
- $(() => {
-
-//   const tweetData = {
-//     "user": {
-//       "name": "Newton",
-//       "avatars": {
-//         "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
-//         "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
-//         "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
-//       },
-//       "handle": "@SirIsaac"
-//     },
-//     "content": {
-//       "text": "If I have seen further it is by standing on the shoulders of giants"
-//     },
-//     "created_at": 1461116232227
-// }
+$(document).ready(function () {
 
 
-// const data = [
-//   {
-//     "user": {
-//       "name": "Newton",
-//       "avatars": {
-//         "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
-//         "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
-//         "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
-//       },
-//       "handle": "@SirIsaac"
-//     },
+/* CROSS SITE SCRIPTING ESCAPER
+    | ==================================================================================== */
+  function escape(str) {
 
-//     "content": {
-//       "text": "If I have seen further it is by standing on the shoulders of giants"
-//     },
-//     "created_at": 1461116232227
-//   },
+    const div = document.createElement('div');
 
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
 
-//   {
-//     "user": {
-//       "name": "Descartes",
-//       "avatars": {
-//         "small":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_50.png",
-//         "regular": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc.png",
-//         "large":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_200.png"
-//       },
-//       "handle": "@rd" },
-//     "content": {
-//       "text": "Je pense , donc je suis"
-//     },
-//     "created_at": 1461113959088
-//   },
+  };
 
-
-//   {
-//     "user": {
-//       "name": "Johann von Goethe",
-//       "avatars": {
-//         "small":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_50.png",
-//         "regular": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1.png",
-//         "large":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_200.png"
-//       },
-//       "handle": "@johann49"
-//     },
-//     "content": {
-//       "text": "Es ist nichts schrecklicher als eine tätige Unwissenheit."
-//     },
-//     "created_at": 1461113796368
-//   }
-
-// ];
-function escape(str) {
-  var div = document.createElement('div');
-  div.appendChild(document.createTextNode(str));
-  return div.innerHTML;
-}
-
-//CREATE TWEET
-const createTweetElement = (tweetData) => {
-
-  const html = `<article class="tweet-post">
-
-            <header class="tweet-header">
-              <img class="avatar" src="${tweetData.user.avatars.small}" alt="">
-                <div class="name-info">
-                  <h2>${tweetData.user.name}</h2>
-                  <p>${tweetData.user.handle}</p>
-                </div>
-            </header>
-
-            <p class="tweet-text">${escape(tweetData.content.text)}}</p>
-
-            <footer class="tweet-date">
-              <p class="footer-p">${tweetData.created_at}</p>
-                <div class="footer-icons">
-                  <ul>
-                    <li><i class="fas fa-flag"></i></li>
-                    <li><i class="fas fa-retweet"></i></li>
-                    <li><i class="fas fa-heart"></i></li>
-                  </ul>
-                </div>
-            </footer>
-
-          </article>`
+/* POST CREATED TIME CONVERTER
+    | ==================================================================================== */
+  function timeConversion(millisec) {
     
-    return html;
+    let seconds = Math.round(millisec / 1000);
 
-};
+    let minutes = Math.round(millisec / (1000 * 60));
 
+    let hours = Math.round(millisec / (1000 * 60 * 60));
 
+    let days = Math.round(millisec / (1000 * 60 * 60 * 24));
 
-//RENDER Tweets to HTML
-function renderTweets(tweets) {
-  let tweetData;
-  
-  for(let tweet of tweets){
-    let tweetData = createTweetElement(tweet);
-    $('#tweets-container').prepend(tweetData);
-  }
-  return tweetData;
-}
+    let years = Math.round(millisec / (1000 * 60 * 60 * 24 * 365))
 
 
-
-//POST Tweet
-const onSubmit =  $("#post-tweet").on("submit", event => {
-    event.preventDefault();
-    let query = $("#post-tweet").serialize();
-    const url = "http://localhost:8080/tweets/";
-    const isTextLength = ($('.tweet-field')[0].value.length)
-    let errorMessage = $('.error-msg');
-
-    if(isTextLength > 0){
-      
-      if(isTextLength <= 140){
-        errorMessage.hide();
-        $.post(url, query);
-        $('.tweet-field')[0].value = '';
-      } else {
-        errorMessage.html("Maximum characters exceeded");
-        errorMessage.show();
-      }
-      
-    } else {
-      errorMessage.html("Please Enter a message");
-      errorMessage.show();
+    if (seconds < 60) {
+      return `${seconds} Secs Ago`;
     }
 
-    loadTweets()
-    
- });
+    if (minutes < 60) {
+      return `${minutes} Mins Ago`;
+    }
+
+    if (hours < 24) {
+      return `${hours} Hours Ago`;
+    }
+
+    if (days < 365) {
+      return `${days} Days Ago`;
+    }
+
+    return `${years} Year Ago`;
+
+  };
 
 
- //GET Tweet
+/* CREATE TWEET 
+    | ==================================================================================== */  
+  const createTweetElement = (tweetData) => {
+    let timePosted = timeConversion(Date.now() - tweetData.created_at);
+    const html =
+      `<article class="tweet-post">
 
- const loadTweets = query => {
-  const url = "http://localhost:8080/tweets/";
+        <header class="tweet-header">
+          <img class="avatar" src="${tweetData.user.avatars.small}" alt="">
+            <div class="name-info">
+              <h3>${tweetData.user.name}</h3>
+              <p>${tweetData.user.handle}</p>
+            </div>
+        </header>
 
-  $.getJSON(url, (data, status) => {
-    renderTweets(data);
-  })
- }
- 
- loadTweets();
+        <p class="tweet-text">${escape(tweetData.content.text)}</p>
+
+        <footer class="tweet-date">
+          <p class="footer-p">${timePosted}</p>
+            <div class="footer-icons">
+              <ul>
+                <li><i class="fas fa-flag"></i></li>
+                <li><i class="fas fa-retweet"></i></li>
+                <li><i class="fas fa-heart"></i></li>
+              </ul>
+            </div>
+        </footer>
+
+      </article>`
+
+    return html;
+
+  };
 
 
- //SLIDE ANIMATIONS
-const slideBtn = $('.compose-btn').on('click', event => {
-  const $isTweet = $('.new-tweet');
-  const $tweetField = $('.tweet-field');
+/* RENDER TWEET
+    | ==================================================================================== */
+  function renderTweets(tweets) {
+    let tweetData;
+
+    for (let tweet of tweets) {
+      tweetData = createTweetElement(tweet);
+      $('#tweets-container').prepend(tweetData);
+    }
+
+  };
+
+
+
+/* POST NEW TWEET
+    | ==================================================================================== */
+
+  const onSubmit = $('#post-tweet').on('submit', event => {
+    event.preventDefault();
+    const errorMessage = $('.error-msg');
+    const isTextLength = $('.tweet-field')[0].value.length;
+    const container = $('#tweets-container');
+    const tweetCounter = $('.counter');
+
+
+    if (isTextLength === 0) {
+      errorMessage.html(`<i class="fas fa-exclamation-circle"></i> Please Enter a message`);
+      errorMessage.show();
+      return;
+    }
+
+    if (isTextLength > 140) {
+      errorMessage.html(`<i class="fas fa-exclamation-circle"></i> Maximum characters exceeded`);
+      errorMessage.show();
+      return;
+    }
   
+    const query = $('#post-tweet').serialize();
+    const posting = $.post('/tweets', query);
 
-  if($($isTweet).is(":hidden")) {
-    $isTweet.slideDown(1000);
-    $tweetField.focus(); 
-  } else {
-    $isTweet.slideUp(1000);
-  }
-})
+    posting.done(function () {
+      $('.tweet-field')[0].value = '';
+      tweetCounter.text('140');
+      container.empty();
+      loadTweets();
+    })
+
+  });
+
+
+  /* LOAD TWEETS 
+    | ==================================================================================== */
+
+  const loadTweets = () => {
+    const url = "http://localhost:8080/tweets/";
+
+    $.getJSON(url, (data) => {
+      renderTweets(data);
+    });
+
+  };
+
+  // LOAD INITIAL TWEETS
+  loadTweets();
+
+
+/* NEW TWEET SLIDER HIDE/SHOW
+    | ==================================================================================== */
+
+  const slideBtn = $('.compose-btn').on('click', () => {
+    const $isTweet = $('.new-tweet');
+    const $tweetField = $('.tweet-field');
+
+
+    if ($($isTweet).is(":hidden")) {
+      $isTweet.slideDown(500);
+      $tweetField.focus();
+    } else {
+      $isTweet.slideUp(500);
+    }
+
+  });
 
 });
