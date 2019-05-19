@@ -69,9 +69,10 @@ $(document).ready(function () {
           <p class="footer-p">${timePosted}</p>
             <div class="footer-icons">
               <ul>
-                <li><i class="fas fa-flag"></i></li>
+                <li><i class="fas fa-flag" ></i></li>
                 <li><i class="fas fa-retweet"></i></li>
-                <li><i class="fas fa-heart"></i></li>
+                <li class="likes"><i class="fas fa-heart" data-likes="false"></i>                </li>
+  
               </ul>
             </div>
         </footer>
@@ -166,4 +167,23 @@ $(document).ready(function () {
 
   });
 
-});
+/* LIKES
+    | ==================================================================================== */
+
+    const likesCount = $('#tweets-container').on('click', '.fa-heart', () => {
+      const heart = $('.fa-heart');
+
+      if (!heart.data('likes')) {
+        heart.css({color: "red"});
+        heart.data('likes', true);
+      } else {
+        heart.css({color: "#65c6f0"})
+        heart.data('likes', false);
+      }
+
+  
+    })
+    
+    
+  });
+  

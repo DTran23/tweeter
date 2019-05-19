@@ -36,7 +36,8 @@ footer {
   .footer-icons i {
     color: #65c6f0;
     margin-left: 0.4rem;
-    font-size: 1.5rem; }
+    font-size: 1.5rem;
+    cursor: pointer; }
 
 .tweet-post:hover .footer-icons {
   opacity: 1; }
