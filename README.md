@@ -22,4 +22,5 @@ Tweeter is a simple, single-page Twitter clone. Tweeter uses JQuery, AJAX to POS
 - SASS
 - body-parser
 - chance
+- md5
 - MongoDB
