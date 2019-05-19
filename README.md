@@ -18,8 +18,6 @@ Tweeter is a simple, single-page Twitter clone. Tweeter uses JQuery, AJAX to POS
 
 - Express
 - Node 5.10.x or above
-- JQuery
-- SASS
 - body-parser
 - chance
 - md5
